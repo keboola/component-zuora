@@ -1,0 +1,1 @@
+Cloud-based software that enable companies to launch, manage and transform into a suscription business

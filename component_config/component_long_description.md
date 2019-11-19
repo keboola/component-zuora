@@ -1,0 +1,1 @@
+Zuora is a cloud based software on a subsciprtion basis that enalbes any company in any industry to successfully launch, manage, and transform into a subscription business.
