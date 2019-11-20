@@ -83,7 +83,7 @@ class Component(KBCEnvHandler):
         function for producting manifest
         '''
 
-        file = DEFAULT_TABLE_DESTINATION+'{}.manifest'.format(file_name)
+        file = DEFAULT_TABLE_DESTINATION+'{}.csv.manifest'.format(file_name)
         manifest = {
             "incremental": True,
             "primary_key": ["id"],
@@ -93,7 +93,7 @@ class Component(KBCEnvHandler):
         try:
             with open(file, 'w') as file_out:
                 json.dump(manifest, file_out)
-                logging.info("Output manifest file produced.")
+                logging.info("Output manifest file [{}] produced.".format(file_name))
         except Exception as e:
             logging.error("Could not produce output file manifest.")
             logging.error(e)
@@ -109,6 +109,14 @@ class Component(KBCEnvHandler):
         endpoints = params.get(KEY_ENDPOINTS)
         backfill_mode = params.get(KEY_BACKFILL)
         backfill = backfill_mode['backfill']
+
+        if params == {}:
+            logging.error('Please enter required parameters.')
+            sys.exit(1)
+        
+        if username == '' or password == '':
+            logging.error('Please enter Zuora account credentials.')
+            sys.exit(1)
 
         # Configuring date range
         if backfill == 'enable':
