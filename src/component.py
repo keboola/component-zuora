@@ -93,7 +93,8 @@ class Component(KBCEnvHandler):
         try:
             with open(file, 'w') as file_out:
                 json.dump(manifest, file_out)
-                logging.info("Output manifest file [{}] produced.".format(file_name))
+                logging.info(
+                    "Output manifest file [{}] produced.".format(file_name))
         except Exception as e:
             logging.error("Could not produce output file manifest.")
             logging.error(e)
@@ -113,7 +114,7 @@ class Component(KBCEnvHandler):
         if params == {}:
             logging.error('Please enter required parameters.')
             sys.exit(1)
-        
+
         if username == '' or password == '':
             logging.error('Please enter Zuora account credentials.')
             sys.exit(1)
