@@ -86,7 +86,7 @@ class Component(KBCEnvHandler):
         file = DEFAULT_TABLE_DESTINATION+'{}.csv.manifest'.format(file_name)
         manifest = {
             "incremental": True,
-            "primary_key": ["id"],
+            "primary_key": ["Id"],
             "columns": columns
         }
 
