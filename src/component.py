@@ -191,7 +191,8 @@ class Component(KBCEnvHandler):
                         '{{CONDITIONS}}', condition)
 
                     response = zuora.query(temp_query)
-                    data = pd.DataFrame(response['records'], columns=columns_array)
+                    data = pd.DataFrame(
+                        response['records'], columns=columns_array)
                     self.output_file(data, output_filename, columns_array)
 
                     # Looping thru the dates
