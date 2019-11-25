@@ -1,1 +1,1 @@
-Cloud-based software that enable companies to launch, manage and transform into a suscription business
+Cloud-based software on a subsciprtion basis that enables any company in any industry to successfully launch, manage, and transform into a subscription business

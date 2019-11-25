@@ -1,7 +1,3 @@
-# Zuora Extractor
-
-Zuora is a cloud-based software that enables any companies in any industry to launch and manage their subcription business. The purpose of the Zuora extractor is to extract subscripted business information details.
-
 ### Zuora API Documentation
 [API document](https://knowledgecenter.zuora.com/DC_Developers/G_SOAP_API/AB_Getting_started_with_the__SOAP_API)
 

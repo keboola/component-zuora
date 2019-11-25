@@ -52,7 +52,7 @@ if 'KBC_LOGGER_ADDR' in os.environ and 'KBC_LOGGER_PORT' in os.environ:
     # remove default logging to stdout
     logger.removeHandler(logger.handlers[0])
 
-APP_VERSION = '0.0.1'
+APP_VERSION = '0.0.2'
 
 
 class Component(KBCEnvHandler):
@@ -111,10 +111,10 @@ class Component(KBCEnvHandler):
         backfill_mode = params.get(KEY_BACKFILL)
         backfill = backfill_mode['backfill']
 
+        # UI paramteres validation
         if params == {}:
             logging.error('Please enter required parameters.')
             sys.exit(1)
-
         if username == '' or password == '':
             logging.error('Please enter Zuora account credentials.')
             sys.exit(1)
@@ -172,8 +172,7 @@ class Component(KBCEnvHandler):
                 temp_query = temp_query.replace('{{CONDITIONS}}', condition)
 
                 response = zuora.query(temp_query)
-                data = pd.DataFrame(response['records'])
-
+                data = pd.DataFrame(response['records'], columns=columns_array)
                 self.output_file(data, output_filename, columns_array)
 
             # ENDPOINTS AFFECTED BY REQUEST TIME RANGE
@@ -192,9 +191,10 @@ class Component(KBCEnvHandler):
                         '{{CONDITIONS}}', condition)
 
                     response = zuora.query(temp_query)
-                    data = pd.DataFrame(response['records'])
+                    data = pd.DataFrame(response['records'], columns=columns_array)
                     self.output_file(data, output_filename, columns_array)
 
+                    # Looping thru the dates
                     temp_date = temp_date_plus_1
 
             # Outputting manifest files for the files
